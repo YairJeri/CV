@@ -8,7 +8,7 @@ quickInformation: [
   "Email: Guidoyair@hotmail.com",
   "Tel: +51 966 121 010",
   "LinkedIn: Yair Jeri",
-  "Sitio web: https://cv-website-ruby.vercel.app/",
+  "Sitio web: https://yairjeri.github.io/CV",
   "GitHub: YairJeri"
 ]
 professionalProfile: {

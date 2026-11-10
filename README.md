@@ -1,32 +1,43 @@
-# Personal Portfolio — Built with Astro + Preact + TailwindCSS
+# Personal Portfolio & Algorithms Laboratory — Yair Jeri
 
-This is my personal portfolio website, developed to showcase my work, skills, and experience as a developer and designer.  
-It is built with **Astro**, **Preact**, and **TailwindCSS**, focusing on speed, simplicity, and a clean modern design.
+Interactive portfolio, curriculum vitae, and computer science laboratory built with **Astro 7**, **Preact**, and **TailwindCSS 4**.
+
+- **Live Deployment:** [https://yairjeri.github.io/CV](https://yairjeri.github.io/CV)
+- **Author:** Guido Yair Abel Jeri Saldaña ([@YairJeri](https://github.com/YairJeri))
+
+---
+
+## Overview
+
+A fast, content-driven portfolio presenting engineering projects, interactive algorithms, and a complete bilingual curriculum vitae with verified credentials.
+
+- **Interactive Playground / Laboratories:**
+  - **Sorting Lab:** Bubble, Selection, Insertion, Merge, Quick, and Heap Sort with step-by-step visual metrics, comparison tracking, and speed controls.
+  - **Graph & Pathfinding Lab:** Grid-based BFS, DFS, Dijkstra, A*, Greedy BFS, and Bidirectional BFS paired with procedural maze generators (Recursive Backtracker, Prim's).
+  - **Physics Lab:** Verlet integration cloth simulation, Warren truss bridge stress analysis, rigid body collisions, and spatial hashing.
+  - **Automata Lab:** Conway's Game of Life with sparse hash grids and classic pattern presets (Glider Gun, Pulsar, Acorn).
+- **Featured Projects Showcase:** Deep-dive case studies covering deep learning engines (CPPNN with Vulkan Compute), distributed systems (NeuroOps in Go), autonomous game solvers (Minesweeper CSP), asynchronous network engines, and spatial simulation engines.
+- **Bilingual CV & PDF Generation:** Built-in routes for English (`/en/cv`) and Spanish (`/es/cv`) with downloadable single-page resumes and full-page landscape certificate attachments.
 
 ---
 
 ## Tech Stack
 
-- **[Astro](https://astro.build/)** — Static site generator optimized for fast performance  
-- **[Preact](https://preactjs.com/)** — Lightweight alternative to React for interactive UI components  
-- **[TailwindCSS](https://tailwindcss.com/)** — Utility-first CSS framework for responsive design
-- **Deployment (Vercel)** — https://cv-website-ruby.vercel.app/
+- **Framework:** [Astro 7](https://astro.build/) (Static Site Generation & Content Collections)
+- **UI Components:** [Preact](https://preactjs.com/) (Lightweight interactive islands)
+- **Styling:** [TailwindCSS 4](https://tailwindcss.com/)
+- **PDF Engine:** Pure Node.js script using `jspdf` for build-time generation
+- **CI/CD Deployment:** Automated GitHub Actions workflow to GitHub Pages
 
 ---
 
-## Features
+## Getting Started
 
-- Fast static generation with Astro
-- Responsive and accessible layout using TailwindCSS
-- Animated statistics and dynamic UI elements
-- Smooth transitions and hover animations  
-- Astro islands
+### Prerequisites
 
----
+Node.js 22 or higher and `npm` or `pnpm`.
 
-## Setup & Development
-
-Clone the repository and install dependencies:
+### Installation
 
 ```bash
 git clone https://github.com/YairJeri/CV_Website.git
@@ -34,21 +45,24 @@ cd CV_Website
 npm install
 ```
 
-Start the development server:
+### Development Server
 
 ```bash
 npm run dev
 ```
 
-Open the website in your browser:
+Visit `http://localhost:4321/CV/` in your browser.
+
+### Build & Static Generation
 
 ```bash
-http://localhost:4321
+npm run build
 ```
+
+This compiles static routes, optimizes images, and generates output in `./dist`.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License.
-You are free to use this code as a reference or base for your own personal portfolio.
+This project is open-source under the [MIT License](LICENSE).
