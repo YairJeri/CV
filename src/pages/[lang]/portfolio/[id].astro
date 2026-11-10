@@ -11,9 +11,11 @@ export async function getStaticPaths() {
     const paths = [];
 
     for (const lang of availableLangs) {
-        for (const p of projects) {
+        // Only match projects belonging to the current language folder (e.g. "en/cropprediction.md")
+        const langProjects = projects.filter((p) => (p.id || "").startsWith(lang + "/") || (p.id || "").startsWith(lang + "\\"));
+        for (const p of langProjects) {
             paths.push({
-                params: { id: p.slug.split("/").pop(), lang },
+                params: { id: (p.id || "").split("/").pop()?.replace(/\.md$/, ""), lang },
                 props: { lang, project: p },
             });
         }
