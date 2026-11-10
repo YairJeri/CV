@@ -8,78 +8,66 @@ quickInformation: [
   "Email: Guidoyair@hotmail.com",
   "Tel: +51 966 121 010",
   "LinkedIn: Yair Jeri",
-  "Website: https://cv-website-ruby.vercel.app/",
+  "Sitio web: https://cv-website-ruby.vercel.app/",
   "GitHub: YairJeri"
 ]
 professionalProfile: {
   title: "Perfil Profesional",
   content: [
-    "Desarrollador Full Stack con experiencia en aplicaciones web, sistemas de IA y procesamiento de imágenes.",
-    "Experto en Java, Spring, C/C++, Angular, Astro, Python y bases de datos SQL y NoSQL.",
-    "Apasionado por diseñar software eficiente y escalable, desde interfaces frontend hasta arquitecturas backend.",
-    "También conocimientos en programación de bajo nivel, optimización de algoritmos y gráficos 3D (OpenGL, Vulkan).",
-    "Busco contribuir en proyectos innovadores y de alto rendimiento."
+    "Estudiante de Ciencias de la Computación con sólidos fundamentos en algoritmos, ingeniería de sistemas y arquitecturas orientadas a datos. Perfil versátil que abarca Ciencia de Datos, Inteligencia Artificial, fundamentos de Big Data y desarrollo de software de alto rendimiento.",
+    "Experiencia práctica en diseño e implementación de sistemas distribuidos, pipelines de machine learning y motores computacionales de bajo nivel utilizando C/C++, Python, Go y Java.",
+    "Fuerte comprensión de optimización algorítmica, modelado probabilístico y principios arquitectónicos de Big Data (escalabilidad horizontal vs. vertical, localidad de datos y particionamiento de cargas de trabajo en paralelo).",
+    "Motivado y adaptable para resolver desafíos técnicos en analítica de datos, sistemas inteligentes e infraestructura backend escalable."
   ]
 }
 skills:
   title: "Habilidades Técnicas"
-  content: [{
-    "Desarrollo Web": [
-      "Full Stack (Java, Spring, Angular, Astro, Node.js)",
-      "APIs REST, autenticación y gestión de sesiones",
-      "Interfaces modernas y responsivas (TailwindCSS, React/Preact)"
-    ],
-    "Backend y Arquitectura": [
-      "Arquitecturas seguras y escalables (Spring Boot, Express, Flask, GraphQL)",
-      "Control de versiones y contenedores (Git, Docker, CI/CD)"
-    ],
-    "Ciencia de Datos e IA": [
-      "Procesamiento de datos (Pandas, NumPy, Scikit-learn)",
-      "Machine Learning y Deep Learning (TensorFlow, Keras)",
-      "Visualización de datos (Matplotlib, Seaborn)"
-    ],
-    "Bases de Datos": [
-      "Diseño y optimización (PostgreSQL, MySQL, MongoDB, SQLite, SQL Server)",
-      "Experiencia local y en la nube"
-    ],
-    "Gráficos y Algoritmos": [
-      "Gráficos 3D y modelado (OpenGL, Vulkan, C++)",
-      "Algoritmos y estructuras de datos",
-      "Programación de alto rendimiento (Rust, C++, C#)"
-    ]
-  }]
-
+  content:
+    - "Ciencia de Datos e IA":
+        - "Análisis de Datos y ML (Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn)"
+        - "Deep Learning y Computación Neuronal (TensorFlow, Keras, Vulkan Compute Shaders)"
+        - "Modelado Probabilístico y Toma de Decisiones (Inferencia Bayesiana, Reducción CSP)"
+      "Big Data y Sistemas Distribuidos":
+        - "Arquitectura Distribuida (Pipelines Master-Worker, Go, orquestación Docker)"
+        - "Conceptos de Big Data (Escalado horizontal vs. vertical, partición de trabajo, localidad de datos)"
+        - "Sistemas Asíncronos y Redes (Multithreading, programación de sockets, TCP/UDP)"
+      "Desarrollo de Software y Sistemas":
+        - "Lenguajes: C/C++ (C++17), Python, Go, Java, TypeScript, SQL"
+        - "Backend y APIs (Spring Boot, Express, Node.js, arquitecturas RESTful)"
+        - "Tecnologías Web y UI (Astro, Preact/React, TailwindCSS)"
+      "Bases de Datos y Herramientas":
+        - "Relacionales y NoSQL (PostgreSQL, MySQL, MongoDB, SQLite, SQL Server)"
+        - "DevOps y Herramientas (Git, GitHub Actions, Docker, entornos Linux)"
 education: {
   title: "Educación",
   content: [
-    "Ciencias de la Computación (70% completado), Universidad Peruana de Ciencias Aplicadas - Marzo 2021 hasta la fecha (DÉCIMO SUPERIOR)"
+    "Bachiller en Ciencias de la Computación (70% completado), Universidad Peruana de Ciencias Aplicadas - Marzo 2021 a la fecha",
+    "Énfasis en complejidad algorítmica, sistemas distribuidos, fundamentos de Big Data e inteligencia artificial."
   ]
 }
 languages: {
   title: "Idiomas",
   content: [
     { language: "Español", level: "Nativo" },
-    { language: "Inglés", level: "Intermedio – capaz de comprender documentación técnica, participar en reuniones y elaborar reportes" }
+    { language: "Inglés", level: "Intermedio – lectura y redacción técnica, análisis de papers y comunicación técnica" }
   ]
 }
 additionalInfo: {
   title: "Información Adicional",
   content: [
-    "Disponibilidad inmediata",
-    "Experiencia con metodologías ágiles (Scrum, Kanban)",
-    "Trabajo en equipo y colaboración",
-    "Adaptable y aprendizaje rápido",
-    "Enfoque en resolución de problemas"
+    "Disponibilidad inmediata para prácticas y roles junior",
+    "Conocimiento práctico de metodologías ágiles (Scrum, Kanban)",
+    "Gran capacidad de aprendizaje autodirigido enfocado en fundamentos de ingeniería"
   ]
 }
 projects: {
-  title: "Proyectos",
+  title: "Proyectos Seleccionados",
   content: [
-    "JobHub: Plataforma Full Stack para buscadores de empleo y empresas (Java, Spring, Angular)",
-    "Crop Prediction: Sistema de ML para recomendaciones agrícolas (Python, TensorFlow, Scikit-learn)",
-    "LU Decomposition: Web app interactiva para aprender álgebra lineal (JS, HTML, CSS)",
-    "SkyRoutes: Web app para cálculo de rutas de vuelo más cortas (Astro, SQL, Preact)",
-    "Wildfire Detection: Pipeline de procesamiento de imágenes para detectar áreas propensas a incendios forestales (Python, OpenCV)"
+    "CPPNN (C++17, Vulkan, Dear ImGui): Motor de deep learning de alto rendimiento con compute shaders en Vulkan para operaciones matriciales aceleradas por GPU, grafos de cómputo e interfaz interactiva.",
+    "NeuroOps (Go, Docker, REST API, Astro): Plataforma de ML distribuido con orquestación Master-Worker para delegación y balanceo de cargas de entrenamiento en contenedores Docker.",
+    "Minesweeper CSP (Python, OpenCV, Satisfacción de Restricciones): Solucionador autónomo combinando visión por computadora en tiempo real e inferencia probabilística bayesiana exacta mediante programación dinámica.",
+    "Network Engine (C++17, Winsock, Multithreading): Biblioteca de red multihilo no bloqueante con soporte híbrido TCP/UDP, secuenciación de paquetes y colas seguras para subprocesos.",
+    "Flow Field Engine (TypeScript, Web Workers, Spatial Hash): Motor 2D con cálculo asíncrono de campos de flujo en Web Workers y Spatial Hash para navegación fluida de cientos de agentes concurrentes."
   ]
 }
 ---

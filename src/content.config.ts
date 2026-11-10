@@ -1,7 +1,8 @@
 import { defineCollection, z } from "astro:content";
-import { glob, file } from "astro/loaders"
+import { glob } from "astro/loaders";
 
 const portfolio = defineCollection({
+    loader: glob({ pattern: "**/*.md", base: "./src/content/portfolio" }),
     schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
@@ -14,7 +15,8 @@ const portfolio = defineCollection({
 });
 
 const resume = defineCollection({
-    schema: (({ image }) => z.object({
+    loader: glob({ pattern: "**/*.md", base: "./src/content/resume" }),
+    schema: ({ image }) => z.object({
         name: z.string(),
         lang: z.string(),
         image: image(),
@@ -46,8 +48,7 @@ const resume = defineCollection({
             title: z.string(),
             content: z.array(z.string()),
         }),
-
-    })),
+    }),
 });
 
 export const collections = { portfolio, resume };

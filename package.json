@@ -3,23 +3,21 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "node scripts/generate-cv-pdf.mjs && astro dev",
+    "build": "node scripts/generate-cv-pdf.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^4.1.2",
+    "@astrojs/preact": "^6.1.2",
     "@tailwindcss/vite": "^4.1.16",
-    "astro": "^5.15.1",
+    "astro": "^7.4.8",
     "astro-icon": "^1.1.5",
     "jspdf": "^3.0.3",
     "preact": "^10.27.2",
-    "tailwindcss": "^4.1.16",
-    "three": "^0.181.0"
+    "tailwindcss": "^4.1.16"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.19",
-    "@types/three": "^0.181.0"
+    "@tailwindcss/typography": "^0.5.19"
   }
 }
