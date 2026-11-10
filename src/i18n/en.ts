@@ -3,39 +3,63 @@ export type Translations = {
     name: string;
     flag: string;
     home: {
+        badge: string;
         title: [string, string];
         prev: string;
         specialization: Array<string>;
         about: string;
         viewProjects: string;
         contact: string;
+        downloadCv: string;
+        playgroundBtn: string;
     };
     navbar: {
         home: string;
         about: string;
         skills: string;
         portfolio: string;
+        playground: string;
+        cv: string;
         contact: string;
+        roleSubtitle: string;
     };
     about: {
+        badge: string;
         title: string;
         header: string;
-        description: [string, string, string];
-    };
-    stats: {
-        technologies: string;
-        personalProjects: string;
-        potential: string;
+        columns: [
+            { title: string; desc: string },
+            { title: string; desc: string },
+            { title: string; desc: string }
+        ];
     };
     skills: {
+        badge: string;
         title: string;
         description: string;
-        categories: Array<string>;
+        domains: Array<{
+            title: string;
+            subtitle: string;
+        }>;
     };
     portfolio: {
+        badge: string;
         title: string;
+        description: string;
+        allTag: string;
+        caseStudy: string;
+        sourceCode: string;
         seeOnGithub: string;
         seeWebsite: string;
+    };
+    resume: {
+        badge: string;
+        title: string;
+        degree: string;
+        university: string;
+        focus: string;
+        languagesTitle: string;
+        downloadButton: string;
     };
     contact: {
         title: string;
@@ -50,58 +74,95 @@ const en: Translations = {
     name: "English",
     flag: "fi-us",
     home: {
-        title: ["My", "Portfolio"],
+        badge: "AVAILABLE FOR ENGINEERING ROLES",
+        title: ["Engineering", "Portfolio"],
         prev: "I'm a",
-        specialization: ["Frontend Developer", "Backend Developer", "Python Developer", "Data Analyst", "Data Scientist", "AI Engineer", "Game Developer", "Network Engineer"],
-        about: "Full stack developer with experience in frontend and backend development, data analysis, machine learning, and game development. Skilled at applying programming and problem-solving to real-world projects.",
-        viewProjects: "View My Projects",
-        contact: "Contact Me",
+        specialization: [
+            "Full Stack Developer",
+            "Systems & Algorithms Engineer",
+            "Data Science & ML Practitioner",
+            "Real-time Graphics & Simulation Enthusiast"
+        ],
+        about: "Computer Science student and full stack software engineer specialized in distributed systems, real-time computational algorithms, machine learning pipelines, and low-level performance optimization.",
+        viewProjects: "View Selected Work",
+        contact: "Get in Touch",
+        downloadCv: "Download CV (PDF)",
+        playgroundBtn: "Launch Computational Lab",
     },
     navbar: {
         home: "Home",
-        about: "About",
+        about: "Profile",
         skills: "Skills",
         portfolio: "Projects",
+        playground: "Playground",
+        cv: "Curriculum Vitae",
         contact: "Contact",
+        roleSubtitle: "Systems & Algorithms",
     },
     about: {
+        badge: "ENGINEERING PROFILE",
         title: "About Me",
-        header: "Full stack building projects in frontend & backend development, data analysis, machine learning, and game development.",
-        description: [
-            "I enjoy working with diverse technologies, developing skills in both frontend and backend areas. I also apply basic data analysis and machine learning techniques in my projects.",
-            "I focus on solving problems and building practical solutions, using programming as a tool for learning and creativity.",
-            "My goal is to keep improving my skills and to develop meaningful projects in software development and data-oriented technologies."
+        header: "Building high-performance software systems with algorithmic rigor and practical engineering discipline.",
+        columns: [
+            {
+                title: "Full Stack & Distributed Systems",
+                desc: "Experienced with reactive frontend architectures and robust backend services across Java Spring, Node.js, relational and document stores."
+            },
+            {
+                title: "Computational & Algorithmic Rigor",
+                desc: "Focus on writing genuine implementations of graph algorithms, numerical physical simulation, and spatial partitioning with mathematical precision."
+            },
+            {
+                title: "Applied Machine Learning & Graphics",
+                desc: "Strong foundations in TensorFlow, statistical data modeling, and low-level hardware rendering pipelines in C++ and graphics APIs."
+            }
         ]
     },
-    stats: {
-        technologies: "Technologies explored",
-        personalProjects: "Personal Projects",
-        potential: "Potential",
-    },
     skills: {
-        title: "Skills",
-        description: "My expertise spans multiple areas — constantly expanding as I explore new technologies and tools.",
-        categories: [
-            "Frameworks & Libraries",
-            "Databases",
-            "Design",
-            "Tools & DevOps",
-            "Languages",
+        badge: "SKILLS",
+        title: "Technologies & Tools",
+        description: "Languages, frameworks, and tools I use for web development, backends, databases, and graphics.",
+        domains: [
+            {
+                title: "Languages",
+                subtitle: "Software development, scripting, and systems programming"
+            },
+            {
+                title: "Backend & Databases",
+                subtitle: "Web services, REST/GraphQL APIs, and data storage"
+            },
+            {
+                title: "Frontend, Graphics & Tools",
+                subtitle: "User interfaces, graphics libraries, and version control"
+            }
         ]
     },
     portfolio: {
-        title: "Portfolio",
-        seeOnGithub: "See on GitHub",
-        seeWebsite: "Website",
+        badge: "PROJECTS",
+        title: "Selected Projects",
+        description: "A selection of projects I've built across web, machine learning, and systems.",
+        allTag: "All",
+        caseStudy: "Case Study →",
+        sourceCode: "Source Code",
+        seeOnGithub: "View on GitHub",
+        seeWebsite: "Live Site",
+    },
+    resume: {
+        badge: "EDUCATION",
+        title: "Education & Background",
+        degree: "Computer Science (70% Completed)",
+        university: "Universidad Peruana de Ciencias Aplicadas (UPC)",
+        focus: "Focus on software development, algorithms, and distributed systems fundamentals.",
+        languagesTitle: "Language Proficiencies",
+        downloadButton: "Download Curriculum Vitae (PDF) ↓"
     },
     contact: {
-        title: "Contact Me",
-        text: "If you have a project, an idea or simply want to say hello, don't hesitate to contact me!",
+        title: "Contact Information",
+        text: "I'm always open to discussing new opportunities, collaborations, or just connecting. Feel free to reach out.",
         email: "Email",
         github: "GitHub",
         linkedin: "LinkedIn"
     }
 };
-
 
 export default en;

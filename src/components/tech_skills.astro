@@ -8,111 +8,98 @@ export interface Props {
 
 const { t } = Astro.props;
 
-const skillsData = [
+const skillDomains = [
     {
-        category: t.skills.categories[0],
-        color: "from-cyan-500/20 to-cyan-500/10",
+        title: t.skills.domains[0].title,
+        subtitle: t.skills.domains[0].subtitle,
+        accent: "border-cyan-500/30 text-cyan-400 bg-cyan-500/10",
         items: [
-            { label: "Astro", name: "astro" },
-            { label: "Preact/React", name: "react" },
-            { label: "Spring", name: "spring" },
-            { label: "OpenGL", name: "opengl" },
-            { label: "Vulkan", name: "vulkan" },
-            { label: "TailwindCSS", name: "tailwindcss" },
-            { label: "Node.js", name: "nodejs" },
-            { label: "Express", name: "express" },
-            { label: "Angular", name: "angular" },
-            { label: "Three.js", name: "threejs" },
-            { label: "TensorFlow", name: "tensorflow" },
-            { label: "Flask", name: "flask" },
-            { label: "GraphQL", name: "graphql" },
+            { name: "C / C++", icon: "cpp", context: "Systems, Algorithms, 3D Graphics" },
+            { name: "C#", icon: "csharp", context: "Desktop, Tooling & Engines" },
+            { name: "Rust", icon: "rust", context: "Safe Concurrency & Tooling" },
+            { name: "Java", icon: "java", context: "Enterprise Backend Architectures" },
+            { name: "Python", icon: "python", context: "Data Science, Scripting & ML" },
+            { name: "JavaScript / TypeScript", icon: "typescript", context: "Strict-type Web & UI Engines" },
+            { name: "HTML5 / CSS3", icon: "html", context: "Semantic Layouts & Styling" },
+            { name: "Bash", icon: "bash", context: "Unix Shell & Automation" },
         ],
     },
     {
-        category: t.skills.categories[3],
-        color: "from-amber-500/20 to-amber-500/10",
+        title: t.skills.domains[1].title,
+        subtitle: t.skills.domains[1].subtitle,
+        accent: "border-emerald-500/30 text-emerald-400 bg-emerald-500/10",
         items: [
-            { label: "Git", name: "git" },
-            { label: "Github", name: "github" },
-            { label: "Docker", name: "docker" },
-            { label: "VSCode", name: "vscode" },
-            { label: "Notion", name: "notion" },
-            { label: "Godot", name: "godot" },
-            { label: "Linux", name: "linux" },
-            { label: "AWS", name: "aws" },
-            { label: "Unity", name: "unity" },
+            { name: "Spring Boot", icon: "spring", context: "Robust Services & Auth" },
+            { name: "Node.js / Express", icon: "nodejs", context: "Event-driven APIs" },
+            { name: "Flask", icon: "flask", context: "Lightweight Python APIs" },
+            { name: "GraphQL", icon: "graphql", context: "Typed Schema Queries" },
+            { name: "PostgreSQL / MySQL", icon: "postgresql", context: "Relational Modeling & Indices" },
+            { name: "MongoDB", icon: "mongodb", context: "Document Data Stores" },
+            { name: "SQLite / SQL Server", icon: "sqlite", context: "Embedded & Enterprise Storage" },
+            { name: "Docker", icon: "docker", context: "Containerization & Workflows" },
+            { name: "AWS", icon: "aws", context: "Cloud Infrastructure Basics" },
         ],
     },
     {
-        category: t.skills.categories[4],
-        color: "from-purple-500/20 to-purple-500/10",
+        title: t.skills.domains[2].title,
+        subtitle: t.skills.domains[2].subtitle,
+        accent: "border-purple-500/30 text-purple-400 bg-purple-500/10",
         items: [
-            { label: "JavaScript", name: "javascript" },
-            { label: "Python", name: "python" },
-            { label: "C++", name: "cpp" },
-            { label: "C#", name: "csharp" },
-            { label: "C", name: "c" },
-            { label: "TypeScript", name: "typescript" },
-            { label: "HTML5", name: "html" },
-            { label: "CSS3", name: "css3" },
-            { label: "Java", name: "java" },
-            { label: "Bash", name: "bash" },
-            { label: "Rust", name: "rust" },
-        ],
-    },
-    {
-        category: t.skills.categories[1],
-        color: "from-lime-500/20 to-lime-500/10",
-        items: [
-            { label: "MongoDB", name: "mongodb" },
-            { label: "PostgreSQL", name: "postgresql" },
-            { label: "MySQL", name: "mysql" },
-            { label: "SQLite", name: "sqlite" },
-            { label: "Turso", name: "turso" },
-            { label: "SQL Server", name: "microsoftsqlserver" },
-        ],
-    },
-    {
-        category: t.skills.categories[2],
-        color: "from-pink-500/20 to-pink-500/10",
-        items: [
-            { label: "Figma", name: "figma" },
-            { label: "Canva", name: "canva" },
-            { label: "UI/UX Principles" },
+            { name: "OpenGL / Vulkan", icon: "opengl", context: "Hardware Acceleration Pipelines" },
+            { name: "Three.js", icon: "threejs", context: "3D Web Graphics & Scenes" },
+            { name: "Unity / Godot", icon: "unity", context: "Game Engines & Interactive Worlds" },
+            { name: "Astro", icon: "astro", context: "Islands Architecture & Speed" },
+            { name: "Angular", icon: "angular", context: "Single Page Applications" },
+            { name: "React / Preact", icon: "react", context: "Reactive Component State" },
+            { name: "TailwindCSS", icon: "tailwindcss", context: "Design Tokens & Clean Layout" },
+            { name: "TensorFlow", icon: "tensorflow", context: "Machine Learning Models" },
+            { name: "Git / GitHub", icon: "git", context: "Collaborative Version Control" },
+            { name: "Figma / Canva", icon: "figma", context: "UI Prototyping & Visual Design" },
         ],
     },
 ];
 ---
 
 <section id="Skills" class="relative">
-    <div class="max-w-6xl mx-auto text-center mb-12">
-        <h2 class="text-4xl font-bold mb-3 tracking-tight">{t.skills.title}</h2>
-        <p class="text-default/80 text-base max-w-2xl mx-auto">
+    <div class="mb-10 text-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono">
+            {t.skills.badge}
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
+            {t.skills.title}
+        </h2>
+        <p class="text-zinc-400 text-sm sm:text-base max-w-3xl leading-relaxed">
             {t.skills.description}
         </p>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {
-            skillsData.map((group, i) => (
-                <div
-                    class={`group relative flex-1 min-w-72 rounded-2xl p-8 shadow-lg bg-linear-to-br ${group.color} border border-white/5 hover:-translate-y-3 hover:shadow-xl transition-all duration-300`}
-                >
-                    <h3 class="text-lg font-semibold mb-6 uppercase tracking-wide text-default">
-                        {group.category}
-                    </h3>
+            skillDomains.map((domain) => (
+                <div class="flex flex-col p-6 rounded-2xl bg-surface/90 border border-white/10 shadow-xl backdrop-blur transition-all duration-300 hover:border-white/20">
+                    <div class="mb-5 pb-4 border-b border-white/10">
+                        <span class={`inline-block px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold mb-2.5 border ${domain.accent}`}>
+                            {domain.title}
+                        </span>
+                        <p class="text-xs text-zinc-400 leading-relaxed font-mono">
+                            {domain.subtitle}
+                        </p>
+                    </div>
 
-                    <div class="flex flex-wrap justify-center gap-4 ">
-                        {group.items.map((skill, j) => (
-                            <div
-                                class={`hover:animate-wiggle flex flex-col flex-1 border border-white items-center justify-center gap-2 rounded-xl p-3 text-sm font-medium transform translate-y-5 scale-90 transition-all duration-500
-            bg-linear-to-br ${group.color} 
-            hover:scale-105 hover:text-white hover:shadow-lg`}
-                            >
-                                {skill.name && (
-                                    <Icon name={skill.name} size={32} />
-                                )}
-                                <span class={``}>{skill.label}</span>
+                    <div class="flex flex-col gap-3 flex-1">
+                        {domain.items.map((skill) => (
+                            <div class="flex items-center gap-3.5 p-2.5 rounded-xl bg-black/40 border border-white/5 hover:border-cyan-500/40 hover:bg-white/5 transition-all">
+                                <div class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center p-1.5 shrink-0 border border-white/10">
+                                    <Icon name={skill.icon} size={20} class="text-zinc-300" />
+                                </div>
+                                <div class="flex flex-col min-w-0">
+                                    <span class="text-xs font-bold text-zinc-100 font-mono truncate">
+                                        {skill.name}
+                                    </span>
+                                    <span class="text-[11px] text-zinc-400 truncate">
+                                        {skill.context}
+                                    </span>
+                                </div>
                             </div>
                         ))}
                     </div>

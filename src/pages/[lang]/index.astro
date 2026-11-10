@@ -3,7 +3,6 @@ import Layout from "../../layouts/layout.astro";
 import About from "../../components/about.astro";
 import Home from "../../components/home.astro";
 import Resume from "../../components/resume.astro";
-import Stats from "../../components/stats.astro";
 import TechSkills from "../../components/tech_skills.astro";
 import Portfolio from "../../components/portfolio.jsx";
 
@@ -63,10 +62,9 @@ const projects = projectsTemp.filter((p) => p.data.lang === lang);
     socialLinks={socialLinks}
     email={email}
 >
-    <Home t={t} socialLinks={socialLinks} />
+    <Home t={t} lang={lang} socialLinks={socialLinks} />
     <About t={t} />
     <Resume t={t} resume={resume!.data} lang={lang} isComplete={false} />
-    <Stats t={t} />
     <TechSkills t={t} />
     <Portfolio projects={projects} lang={lang} t={t} client:visible />
 </Layout>

@@ -8,94 +8,102 @@ import type { Translations } from "../i18n/en";
 
 export interface Props {
     t: Translations;
+    lang?: string;
     socialLinks: Array<{ href: string; label: string; icon: string }>;
 }
 
-const { t, socialLinks } = Astro.props;
+const { t, lang = "en", socialLinks } = Astro.props;
 ---
 
 <section
     id="Home"
     class="min-h-screen relative overflow-hidden flex items-center w-full"
 >
-    <div class="relative w-full z-10 mt-32">
-        <div class="flex flex-row items-center justify-around w-full flex-wrap">
-            <div class="text-center lg:text-left">
+    <div class="relative w-full z-10 mt-28">
+        <div class="flex flex-row items-center justify-around w-full flex-wrap gap-8">
+            <div class="text-center lg:text-left max-w-xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    {t.home.badge}
+                </div>
+
                 <h1
-                    class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-4 text-heading"
+                    class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-2 text-heading tracking-tight"
                 >
                     {t.home.title[0]}
-                    <span
-                        class="text-accent relative after:absolute after:-bottom-1 after:left-0 after:w-full after:h-1 after:bg-linear-to-t after:from-accent after:to-accent/50"
-                    >
-                        {t.home.title[1]}</span
-                    >
+                    <span class="text-cyan-400"> {t.home.title[1]}</span>
                 </h1>
-                <h2 class="text-2xl md:text-3xl text-heading mt-8 mx-0 mb-3">
-                    Yair Jeri
+                <h2 class="text-2xl md:text-3xl font-mono text-white mt-4 mb-2">
+                    Guido Yair Abel Jeri
                 </h2>
-                <p class="text-2xl mb-5 text-default">
-                    <span> {t.home.prev} </span>
+                <p class="text-xl mb-5 text-default font-mono">
+                    <span class="text-zinc-400"> {t.home.prev} </span>
                     <TypedText
                         specialization={t.home.specialization}
                         client:load
                     />
                 </p>
                 <p
-                    class="text-base md:text-xl leading-[1.6] text-default/80 mb-10 max-w-[500px] mx-auto lg:mx-0"
+                    class="text-sm md:text-base leading-relaxed text-zinc-300 mb-8 max-w-[520px] mx-auto lg:mx-0"
                 >
                     {t.home.about}
                 </p>
 
-                <div class="flex flex-wrap gap-5 w-fit mb-10 mx-auto lg:mx-0">
+                {/* Primary Call-to-actions */}
+                <div class="flex flex-wrap gap-3.5 w-fit mb-8 mx-auto lg:mx-0 items-center">
+                    <a
+                        href={`/${lang}/playground`}
+                        class="inline-flex items-center gap-2 py-3 px-6 text-sm md:text-base font-mono font-bold rounded-xl transition duration-200 bg-cyan-400 text-black hover:bg-cyan-300 hover:shadow-lg hover:shadow-cyan-500/25 transform hover:-translate-y-0.5"
+                    >
+                        <Icon name="playground" size={18} />
+                        {t.home.playgroundBtn}
+                    </a>
                     <a
                         href="#Portfolio"
-                        class="py-3 px-6 text-sm md:py-4 md:px-8 md:text-lg font-semibold rounded-4xl border-2 hover:border-transparent duration-300 ease-in bg-accent text-contrast border-accent hover:bg-neutral-900 hover:-translate-y-0.5 hover:text-accent"
+                        class="py-3 px-5 text-sm md:text-base font-medium rounded-xl border border-white/20 text-zinc-200 hover:border-cyan-400 hover:text-cyan-300 bg-white/5 transition duration-200"
                     >
                         {t.home.viewProjects}
                     </a>
                     <a
-                        href="#Contact"
-                        class="py-3 px-6 text-sm md:py-4 md:px-8 md:text-lg font-semibold rounded-4xl border-2 duration-300 ease-in bg-transparent text-accent border-accent hover:bg-accent hover:text-contrast hover:-translate-y-0.5"
+                        href={`/files/CV_Yair Jeri_${lang}.pdf`}
+                        target="_blank"
+                        download
+                        class="py-3 px-5 text-sm md:text-base font-medium rounded-xl border border-white/10 text-zinc-300 hover:text-white bg-black/40 hover:bg-white/10 transition duration-200"
                     >
-                        {t.home.contact}
+                        {t.home.downloadCv}
                     </a>
                 </div>
 
-                <div class="flex gap-5 w-fit lg:mx-0 text-center">
+                <div class="flex gap-4 w-fit mx-auto lg:mx-0 text-center items-center">
                     {
-                        socialLinks.map((item, index) => (
+                        socialLinks.map((item) => (
                             <a
                                 href={item.href}
                                 target="_blank"
-                                class="group inline-flex items-center 
-                        justify-center w-12 h-12 my-0 mx-0.5 text-lg
-                         text-default rounded-4xl bg-default/10 duration-300
-                         hover:text-contrast hover:bg-accent"
+                                rel="noreferrer"
+                                class="inline-flex items-center justify-center w-10 h-10 text-default rounded-xl bg-white/5 hover:bg-cyan-400 hover:text-black transition duration-200"
+                                aria-label={item.label}
                             >
-                                <Icon name={item.icon} size={32} />
+                                <Icon name={item.icon} size={22} />
                             </a>
                         ))
                     }
                 </div>
             </div>
+
             <div
-                class="flex items-center justify-center lg:min-w-80 lg:max-w-[600px] lg:w-1/3 lg:aspect-square"
+                class="flex items-center justify-center lg:min-w-80 lg:max-w-[440px] lg:w-1/3 aspect-square"
             >
                 <div
-                    class="relative w-72 h-72 md:w-80 md:h-80 lg:w-full lg:h-full"
+                    class="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl p-1 bg-gradient-to-tr from-cyan-500/30 via-transparent to-purple-500/20 border border-white/10 shadow-2xl"
                 >
-                    <div
-                        class="absolute inset-4 bg-accent/10 rounded-4xl z-0 overflow-hidden"
-                    >
-                        <Image
-                            src={photo}
-                            alt="Photo of me"
-                            width="720"
-                            height="720"
-                            class="relative w-full h-full object-cover rounded-4xl z-10 transform scale-120"
-                        />
-                    </div>
+                    <Image
+                        src={photo}
+                        alt="Photo of Yair Jeri"
+                        width="720"
+                        height="720"
+                        class="w-full h-full object-cover rounded-[22px] z-10"
+                    />
                 </div>
             </div>
         </div>
