@@ -1,5 +1,6 @@
 ---
 const { languages, lang } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const currentLang =
     languages.find(
         (langObj: { code: string; label: string }) => langObj.code === lang,
@@ -42,7 +43,7 @@ const currentLang =
                             flag: string;
                         }) => (
                             <a
-                                href={`/${langOpt.code}/`}
+                                href={`${base}/${langOpt.code}/`}
                                 class={`block px-5 py-3 text-sm text-default hover:bg-accent/20 transition-all duration-200 text-center ${
                                     langOpt.code === lang
                                         ? "text-accent font-semibold"

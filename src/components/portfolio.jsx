@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks";
 
-export default function Portfolio({ projects, lang, t }) {
+export default function Portfolio({ projects, lang, t, base = "" }) {
     const [selectedTag, setSelectedTag] = useState("All");
 
     const allTags = Array.from(new Set(projects.flatMap(p => p.data.tags)));
@@ -110,7 +110,7 @@ export default function Portfolio({ projects, lang, t }) {
                                 {/* Actions */}
                                 <div className="flex items-center gap-3 pt-4 border-t border-white/10 mt-auto">
                                     <a
-                                        href={`/${lang}/portfolio/${projectId}`}
+                                        href={`${base.replace(/\/$/, "")}/${lang}/portfolio/${projectId}`}
                                         className="inline-flex items-center justify-center px-4 py-2 rounded-lg text-xs font-mono font-bold bg-cyan-500/10 hover:bg-cyan-500 text-cyan-300 hover:text-black border border-cyan-500/30 transition-all"
                                     >
                                         {t.portfolio.caseStudy}

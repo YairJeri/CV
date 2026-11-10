@@ -53,6 +53,7 @@ const email = "Guidoyair@hotmail.com";
 
 const resume = resumeCollection.find((r) => r.data.lang === lang);
 const projects = projectsTemp.filter((p) => p.data.lang === lang);
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout
@@ -66,5 +67,5 @@ const projects = projectsTemp.filter((p) => p.data.lang === lang);
     <About t={t} />
     <Resume t={t} resume={resume!.data} lang={lang} isComplete={false} />
     <TechSkills t={t} />
-    <Portfolio projects={projects} lang={lang} t={t} client:visible />
+    <Portfolio projects={projects} lang={lang} t={t} base={base} client:visible />
 </Layout>

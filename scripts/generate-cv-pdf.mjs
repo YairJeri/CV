@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import yaml from 'yaml';
 import { jsPDF } from 'jspdf';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -10,13 +9,131 @@ const projectRoot = path.resolve(__dirname, '..');
 
 const languages = ['en', 'es'];
 
+// Zero external dependency markdown/yaml parser for the resume structure
 function parseResumeMarkdown(filePath) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const match = fileContent.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  if (!match) {
-    throw new Error(`Invalid frontmatter in ${filePath}`);
+  const text = match ? match[1] : fileContent;
+
+  const data = {};
+  const lines = text.split(/\r?\n/);
+
+  let i = 0;
+  while (i < lines.length) {
+    const rawLine = lines[i];
+    const line = rawLine.trimEnd();
+    i++;
+    if (!line.trim() || line.trim().startsWith('#')) continue;
+
+    // Single-line JSON/JS object: key: { ... }
+    const inlineObj = line.match(/^([a-zA-Z0-9_]+):\s*(\{[\s\S]*\})$/);
+    if (inlineObj) {
+      const key = inlineObj[1];
+      const objStr = inlineObj[2];
+      try {
+        const fn = new Function('return ' + objStr);
+        data[key] = fn();
+        continue;
+      } catch (e) {
+        console.warn(`Could not parse inline object ${key}:`, e.message);
+      }
+    }
+
+    // Simple key: "value"
+    const simpleVal = line.match(/^([a-zA-Z0-9_]+):\s*\"(.*)\"$/);
+    if (simpleVal) {
+      data[simpleVal[1]] = simpleVal[2];
+      continue;
+    }
+
+    // List: key: [ ... ]
+    const listStart = line.match(/^([a-zA-Z0-9_]+):\s*\[\s*$/);
+    if (listStart) {
+      const key = listStart[1];
+      const list = [];
+      while (i < lines.length && !lines[i].trim().startsWith(']')) {
+        const itemLine = lines[i].trim();
+        const itemMatch = itemLine.match(/^\"(.*)\",?$/);
+        if (itemMatch) {
+          list.push(itemMatch[1]);
+        }
+        i++;
+      }
+      i++; // skip ']'
+      data[key] = list;
+      continue;
+    }
+
+    // Skills custom parsing
+    if (line.startsWith('skills:')) {
+      data.skills = { title: 'Technical Skills', content: [] };
+      const currentMap = {};
+      let currentSubKey = null;
+
+      while (i < lines.length) {
+        const sLine = lines[i];
+        if (sLine.match(/^[a-zA-Z0-9_]+:/)) break;
+        i++;
+
+        const trimmed = sLine.trim();
+        if (!trimmed) continue;
+
+        if (trimmed.startsWith('title:')) {
+          const tMatch = trimmed.match(/title:\s*\"(.*)\"/);
+          if (tMatch) data.skills.title = tMatch[1];
+          continue;
+        }
+
+        if (trimmed === 'content:') {
+          continue;
+        }
+
+        const groupStart = sLine.match(/^\s{4}-\s*\"([^\"]+)\":/);
+        if (groupStart) {
+          currentSubKey = groupStart[1];
+          currentMap[currentSubKey] = [];
+          continue;
+        }
+
+        const nextSubGroup = sLine.match(/^\s{6}\"([^\"]+)\":/);
+        if (nextSubGroup) {
+          currentSubKey = nextSubGroup[1];
+          currentMap[currentSubKey] = [];
+          continue;
+        }
+
+        const itemMatch = sLine.match(/^\s{8}-\s*\"(.*)\"/);
+        if (itemMatch && currentSubKey) {
+          currentMap[currentSubKey].push(itemMatch[1]);
+          continue;
+        }
+      }
+      data.skills.content = [currentMap];
+      continue;
+    }
+
+    // Multiline object: key: { \n ... \n }
+    const multilineObj = line.match(/^([a-zA-Z0-9_]+):\s*\{\s*$/);
+    if (multilineObj) {
+      const key = multilineObj[1];
+      let fullObjStr = '{';
+      while (i < lines.length) {
+        const oLine = lines[i];
+        i++;
+        fullObjStr += '\n' + oLine;
+        if (oLine.trim() === '}' || oLine.trim() === '---') break;
+      }
+      try {
+        const fn = new Function('return ' + fullObjStr);
+        data[key] = fn();
+      } catch (e) {
+        console.warn(`Could not parse multiline object ${key}:`, e.message);
+      }
+      continue;
+    }
   }
-  return yaml.parse(match[1]);
+
+  return data;
 }
 
 function generateResumePdf(data, outputPath) {
@@ -78,7 +195,7 @@ function generateResumePdf(data, outputPath) {
   const line2 = [
     data.quickInformation?.[4] || 'LinkedIn: Yair Jeri',
     data.quickInformation?.[6] || 'GitHub: YairJeri',
-    data.quickInformation?.[5] || 'Portfolio: cv-website-ruby.vercel.app'
+    data.quickInformation?.[5] || 'Portfolio: yairjeri.github.io/CV'
   ].join('   •   ');
   doc.text(line2, margin, y);
   y += 8;
@@ -133,7 +250,6 @@ function generateResumePdf(data, outputPath) {
     doc.setFontSize(8.5);
 
     for (const proj of data.projects.content) {
-      // Parse project format: "Name (Tech): Description"
       const colonIndex = proj.indexOf(':');
       let titlePart = proj;
       let descPart = '';
@@ -215,13 +331,11 @@ function generateResumePdf(data, outputPath) {
         const props = doc.getImageProperties(imgData);
         const isLandscape = props.width >= props.height;
 
-        // Add page matching orientation
         doc.addPage('a4', isLandscape ? 'landscape' : 'portrait');
 
         const curPageW = doc.internal.pageSize.getWidth();
         const curPageH = doc.internal.pageSize.getHeight();
 
-        // Fit edge-to-edge with 18pt margin
         const certMargin = 18;
         const maxW = curPageW - certMargin * 2;
         const maxH = curPageH - certMargin * 2;

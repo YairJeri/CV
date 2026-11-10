@@ -11,14 +11,15 @@ export interface Props {
 }
 
 const { lang, t, socialLinks } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const navItems = [
-    { href: "/" + lang + "/#Home", label: t.navbar.home, icon: "home" },
-    { href: "/" + lang + "/#About", label: t.navbar.about, icon: "about" },
-    { href: "/" + lang + "/#Skills", label: t.navbar.skills, icon: "skills" },
-    { href: "/" + lang + "/#Portfolio", label: t.navbar.portfolio, icon: "portfolio" },
-    { href: "/" + lang + "/playground", label: t.navbar.playground, icon: "playground" },
-    { href: "/" + lang + "/cv", label: t.navbar.cv, icon: "resume" },
-    { href: "/" + lang + "/#Contact", label: t.navbar.contact, icon: "contact" },
+    { href: `${base}/${lang}/#Home`, label: t.navbar.home, icon: "home" },
+    { href: `${base}/${lang}/#About`, label: t.navbar.about, icon: "about" },
+    { href: `${base}/${lang}/#Skills`, label: t.navbar.skills, icon: "skills" },
+    { href: `${base}/${lang}/#Portfolio`, label: t.navbar.portfolio, icon: "portfolio" },
+    { href: `${base}/${lang}/playground`, label: t.navbar.playground, icon: "playground" },
+    { href: `${base}/${lang}/cv`, label: t.navbar.cv, icon: "resume" },
+    { href: `${base}/${lang}/#Contact`, label: t.navbar.contact, icon: "contact" },
 ];
 
 const languages = getLanguageNames();

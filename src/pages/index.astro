@@ -1,5 +1,6 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const defaultLang = "es";
 ---
 
-<meta http-equiv="refresh" content={`0; url=/${defaultLang}/`} />
+<meta http-equiv="refresh" content={`0; url=${base}/${defaultLang}/`} />
