@@ -63,11 +63,11 @@ additionalInfo: {
 projects: {
   title: "Proyectos Seleccionados",
   content: [
+    "CineGraph (Python, PyTorch, Polars, Truncated SVD): Motor de recomendación e inteligencia de grafos sobre 33M de calificaciones. Autoencoders profundos, factorización SVD y modularidad Louvain.",
     "CPPNN (C++17, Vulkan, Dear ImGui): Motor de deep learning de alto rendimiento con compute shaders en Vulkan para operaciones matriciales aceleradas por GPU, grafos de cómputo e interfaz interactiva.",
     "NeuroOps (Go, Docker, REST API, Astro): Plataforma de ML distribuido con orquestación Master-Worker para delegación y balanceo de cargas de entrenamiento en contenedores Docker.",
     "Minesweeper CSP (Python, OpenCV, Satisfacción de Restricciones): Solucionador autónomo combinando visión por computadora en tiempo real e inferencia probabilística bayesiana exacta mediante programación dinámica.",
-    "Network Engine (C++17, Winsock, Multithreading): Biblioteca de red multihilo no bloqueante con soporte híbrido TCP/UDP, secuenciación de paquetes y colas seguras para subprocesos.",
-    "Flow Field Engine (TypeScript, Web Workers, Spatial Hash): Motor 2D con cálculo asíncrono de campos de flujo en Web Workers y Spatial Hash para navegación fluida de cientos de agentes concurrentes."
+    "Network Engine (C++17, Winsock, Multithreading): Biblioteca de red multihilo no bloqueante con soporte híbrido TCP/UDP, secuenciación de paquetes y colas seguras para subprocesos."
   ]
 }
 ---

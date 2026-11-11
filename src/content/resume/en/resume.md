@@ -63,11 +63,11 @@ additionalInfo: {
 projects: {
   title: "Selected Projects",
   content: [
+    "CineGraph (Python, PyTorch, Polars, Truncated SVD): Recommendation & graph intelligence engine over 33M MovieLens ratings. Deep autoencoders, SVD factorization, and Louvain modularity.",
     "CPPNN (C++17, Vulkan, Dear ImGui): High-performance deep learning engine featuring custom Vulkan compute shaders for matrix operations, computational graphs, and interactive UI inspection.",
     "NeuroOps (Go, Docker, REST API, Astro): Distributed ML pipeline with Master-Worker task scheduling, health monitoring, and containerized model training workflows.",
     "Minesweeper CSP (Python, OpenCV, Constraint Satisfaction): Autonomous solver combining real-time computer vision screen perception with exact Bayesian probabilistic inference via dynamic programming.",
-    "Network Engine (C++17, Winsock, Multithreading): Asynchronous non-blocking network library supporting hybrid TCP/UDP transport with packet sequencing and thread-safe queues.",
-    "Flow Field Engine (TypeScript, Web Workers, Spatial Hash): 2D simulation engine with asynchronous vector field pathfinding running in background workers to handle large-scale agent navigation."
+    "Network Engine (C++17, Winsock, Multithreading): Asynchronous non-blocking network library supporting hybrid TCP/UDP transport with packet sequencing and thread-safe queues."
   ]
 }
 ---
